@@ -41,7 +41,9 @@ mail_closing: "Good Bye"
 
 ## Usage
 
-    $ jekyll mail
+    $ jekyll mail # send last post
+    $ jekyll mail 2013-08-01-post # send post with name 2013-08-01-post
+    $ jekyll mail --test # Open email for preview without sending
 
 ## Development
 
