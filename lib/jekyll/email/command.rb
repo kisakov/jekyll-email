@@ -27,7 +27,7 @@ module Jekyll
                      options['mail_closing']
               Mailer.new.deliver(ENV['RECIPIENTS'], title, body)
 
-              puts "\nPost \"#{title}\" was sent to #{ENV['RECIPIENTS']}"
+              puts "\nPost \"#{data['title']}\" was sent to #{ENV['RECIPIENTS']}"
             end
           end
         end
