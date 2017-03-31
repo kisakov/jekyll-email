@@ -1,9 +1,9 @@
 require "jekyll/email/version"
 require "mail"
-require "byebug"
 require "dotenv/load"
-require "jekyll/email/mailer.rb"
-require "jekyll/email/command.rb"
+require "letter_opener"
+require "jekyll/email/mailer"
+require "jekyll/email/command"
 
 module Jekyll
   module Email

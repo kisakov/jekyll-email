@@ -1,18 +1,20 @@
 module Jekyll
   module Email
     class Mailer
-      def initialize
-        options = { address:             'smtp.gmail.com',
-                    port:                 587,
-                    domain:               'gmail.com',
-                    user_name:            ENV['GMAIL_LOGIN'],
-                    password:             ENV['GMAIL_PASSWORD'],
-                    authentication:       'plain',
-                    enable_starttls_auto: true
-        }
+      OPTIONS = { address:             'smtp.gmail.com',
+                  port:                 587,
+                  domain:               'gmail.com',
+                  user_name:            ENV['GMAIL_LOGIN'],
+                  password:             ENV['GMAIL_PASSWORD'],
+                  authentication:       'plain',
+                  enable_starttls_auto: true
+                }
+      def initialize(smtp = true)
+        delivery = smtp ? :smtp : LetterOpener::DeliveryMethod 
+        options = smtp ? OPTIONS : { location: File.expand_path('../tmp/letter_opener', __FILE__) }
 
         Mail.defaults do
-          delivery_method :smtp, options
+          delivery_method delivery, options
         end
       end
 
