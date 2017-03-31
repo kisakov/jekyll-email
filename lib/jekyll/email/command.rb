@@ -21,7 +21,7 @@ module Jekyll
               data = post.data
               title = "#{options['mail_subject']} \"#{data['title']}\""
               body = options['mail_intro'] + "<br><br>" +
-                     "\"#{data['title']}\"" + "<br>" +
+                     "<a href='#{options['domain']}#{post.url}'>\"#{data['title']}\"</a>" + "<br>" +
                      data['excerpt'].to_s.strip +
                      "<a href='#{options['domain']}#{post.url}'>#{options['mail_read_more']}</a>" + "<br><br>" +
                      options['mail_closing']
