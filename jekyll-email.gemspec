@@ -30,4 +30,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_runtime_dependency "mail"
   spec.add_runtime_dependency "dotenv"
+  spec.add_runtime_dependency "byebug"
 end
