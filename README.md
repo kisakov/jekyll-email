@@ -21,6 +21,7 @@ Create .env file in root of your jekyll's project
 ```
 GMAIL_LOGIN=YOUR_GMAIL_LOGIN
 GMAIL_PASSWORD=YOUR_GMAIL_PASSWORD
+RECIPIENTS="recipient1@gmail.com,recipient2@gmail.com"
 ```
 
 You can read about gmail authentication [there](http://stackoverflow.com/questions/33918448/ruby-sending-mail-via-gmail-smtp)
@@ -36,9 +37,6 @@ mail_subject: "New post"
 mail_intro: "Hello"
 mail_read_more: "read next..."
 mail_closing: "Good Bye"
-emails:
-  - recipient1@gmail.com
-  - recipient2@gmail.com
 ```
 
 ## Usage

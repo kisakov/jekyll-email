@@ -25,9 +25,9 @@ module Jekyll
                      data['excerpt'].to_s.strip +
                      "<a href='#{options['domain']}#{post.url}'>#{options['mail_read_more']}</a>" + "<br><br>" +
                      options['mail_closing']
-              Mailer.new.deliver(options['emails'], title, body)
+              Mailer.new.deliver(ENV['RECIPIENTS'], title, body)
 
-              puts "\nPost \"#{title}\" was sent to #{options['emails'].join(', ')}"
+              puts "\nPost \"#{title}\" was sent to #{ENV['RECIPIENTS']}"
             end
           end
         end
