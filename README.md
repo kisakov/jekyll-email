@@ -25,7 +25,7 @@ GMAIL_PASSWORD=YOUR_GMAIL_PASSWORD
 
 You can read about gmail authentication [there](http://stackoverflow.com/questions/33918448/ruby-sending-mail-via-gmail-smtp)
 
-Also exlude .env file from your git repository in .gitignore
+Also exclude .env file from your git repository in .gitignore
 
 
 And finaly add these to your _config.yml
