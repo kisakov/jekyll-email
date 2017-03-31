@@ -1,28 +1,49 @@
 # Jekyll::Email
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/jekyll/email`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Jekyll email plugin. Send emails with simple command.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add this line to your jekyll application's Gemfile:
 
 ```ruby
-gem 'jekyll-email'
+group :jekyll_plugins do
+  gem 'jekyll-email', git: 'git@github.com:kisakov/jekyll-email.git'
+end
 ```
 
 And then execute:
 
     $ bundle
 
-Or install it yourself as:
+Create .env file in root of your jekyll's project
 
-    $ gem install jekyll-email
+```
+GMAIL_LOGIN=YOUR_GMAIL_LOGIN
+GMAIL_PASSWORD=YOUR_GMAIL_PASSWORD
+```
+
+You can read about gmail authentication [there](http://stackoverflow.com/questions/33918448/ruby-sending-mail-via-gmail-smtp)
+
+Also exlude .env file from your git repository in .gitignore
+
+
+And finaly add these to your _config.yml
+
+```yml
+domain: "http://your_domain.com"
+mail_subject: "New post"
+mail_intro: "Hello"
+mail_read_more: "read next..."
+mail_closing: "Good Bye"
+emails:
+  - recipient1@gmail.com
+  - recipient2@gmail.com
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+    $ jekyll mail
 
 ## Development
 

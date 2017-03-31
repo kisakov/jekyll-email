@@ -5,7 +5,7 @@ module Jekyll
         options = { address:             'smtp.gmail.com',
                     port:                 587,
                     domain:               'gmail.com',
-                    user_name:            ENV['GMAIL_NAME'],
+                    user_name:            ENV['GMAIL_LOGIN'],
                     password:             ENV['GMAIL_PASSWORD'],
                     authentication:       'plain',
                     enable_starttls_auto: true
@@ -18,7 +18,7 @@ module Jekyll
 
       def deliver(to, subject, body)
         Mail.deliver do
-          from    ENV['GMAIL_NAME']
+          from    ENV['GMAIL_LOGIN']
           to      to
           subject subject
 
