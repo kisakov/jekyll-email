@@ -43,7 +43,8 @@ mail_closing: "Good Bye"
 
     $ jekyll mail # send last post
     $ jekyll mail 2013-08-01-post # send post with name 2013-08-01-post
-    $ jekyll mail --test # Open email for preview without sending
+    $ jekyll mail -preview # Open email for preview without sending
+    $ jekyll mail -recipients karmelalla@gmail.com # Send an email only to specific recipients
 
 ## Development
 
