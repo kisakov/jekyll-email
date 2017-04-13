@@ -1,6 +1,7 @@
 module Jekyll
   module Email
     class Command < Jekyll::Command
+
       class << self
         def init_with_program(prog)
           prog.command(:mail) do |c|
@@ -39,6 +40,7 @@ module Jekyll
           end
         end
       end
+
     end
   end
 end
