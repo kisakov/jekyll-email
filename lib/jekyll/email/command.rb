@@ -5,7 +5,7 @@ module Jekyll
         def init_with_program(prog)
           prog.command(:mail) do |c|
             c.syntax "mail [options]"
-            c.description 'Send email about psot'
+            c.description 'Send email about post'
             c.option 'post', '-post POST', 'Post name'
             c.option 'test', '-preview', '--test', 'Test mode'
             c.option 'recipients', '-r RECIPIENTS', '-recipients RECIPIENTS', '--recipients RECIPIENTS', 'Send an email only to specific recipients'
