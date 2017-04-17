@@ -9,6 +9,7 @@ module Jekyll
                   authentication:       'plain',
                   enable_starttls_auto: true
                 }
+
       def initialize(smtp = true)
         delivery = smtp ? :smtp : LetterOpener::DeliveryMethod
         options = smtp ? OPTIONS : { location: File.expand_path('../tmp/letter_opener', __FILE__) }
@@ -18,10 +19,19 @@ module Jekyll
         end
       end
 
-      def deliver(to, subject, body)
+      def deliver(recipients, subject, body)
+        recipients.split(',').map(&:strip).each do |recipient|
+          puts "sending to #{recipient}..."
+          deliver_to_recipient(recipient, subject, body)
+        end
+      end
+
+      private
+
+      def deliver_to_recipient(recipient, subject, body)
         Mail.deliver do
           from    ENV['GMAIL_LOGIN']
-          bcc     to
+          to      recipient
           subject subject
 
           html_part do
