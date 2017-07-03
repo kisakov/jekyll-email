@@ -5,6 +5,7 @@ module Jekyll
       class << self
         def init_with_program(prog)
           prog.command(:mail) do |c|
+            c.alias(:email)
             c.syntax "mail [options]"
             c.description 'Send email about post'
             c.option 'post', '-post POST', 'Post name'
