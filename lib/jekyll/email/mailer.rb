@@ -1,6 +1,8 @@
 module Jekyll
   module Email
     class Mailer
+      attr_reader :is_smtp
+
       OPTIONS = { address:             'smtp.gmail.com',
                   port:                 587,
                   domain:               'gmail.com',
@@ -11,6 +13,7 @@ module Jekyll
                 }
 
       def initialize(smtp = true)
+        @is_smtp = smtp
         delivery = smtp ? :smtp : LetterOpener::DeliveryMethod
         options = smtp ? OPTIONS : { location: File.expand_path('../tmp/letter_opener', __FILE__) }
 
@@ -20,7 +23,10 @@ module Jekyll
       end
 
       def deliver(recipients, subject, body)
-        recipients.split(',').map(&:strip).each do |recipient|
+        recipients_list = recipients.split(',').map(&:strip)
+        recipients_list = [recipients_list.first] unless is_smtp
+
+        recipients_list.each do |recipient|
           puts "sending to #{recipient}..."
           deliver_to_recipient(recipient, subject, body)
         end

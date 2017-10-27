@@ -21,7 +21,9 @@ module Jekyll
               site.reset
               site.read
               posts = site.posts.docs
-              post = opts['post'] ? posts.find { |post| post.basename.include?(opts['post']) } : posts.last
+              last_story =  posts.reverse.find { |post| !post.data['categories'].include?('cooking') }
+              post = opts['post'] ? posts.find { |post| post.basename.include?(opts['post']) } : last_story
+
               if post
                 recipients = opts['recipients'] || ENV['RECIPIENTS']
                 data = post.data
