@@ -33,4 +33,5 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "mail"
   spec.add_runtime_dependency "dotenv"
   spec.add_runtime_dependency "letter_opener"
+  spec.add_runtime_dependency "highline"
 end

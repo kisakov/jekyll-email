@@ -27,7 +27,9 @@ module Jekyll
         recipients_list = [recipients_list.first] unless is_smtp
 
         recipients_list.each do |recipient|
-          puts "sending to #{recipient}..."
+          output_message = is_smtp ? "sending to #{recipient}..." : "opening in your browser..."
+          puts output_message
+
           deliver_to_recipient(recipient, subject, body)
         end
       end

@@ -21,12 +21,17 @@ module Jekyll
               site.reset
               site.read
               posts = site.posts.docs
-              last_story =  posts.reverse.find { |post| !post.data['categories'].include?('cooking') }
+              last_story = posts.reverse.find { |post| !post.data['categories'].include?('cooking') && !post.data['hidden'] }
               post = opts['post'] ? posts.find { |post| post.basename.include?(opts['post']) } : last_story
 
               if post
                 recipients = opts['recipients'] || ENV['RECIPIENTS']
                 data = post.data
+
+                unless opts['test']
+                  exit unless HighLine.new.agree("This will send \"#{data['title']}\". Do you want to proceed? (yes/no/y/n)")
+                end
+
                 title = "#{options['mail_subject']} \"#{data['title']}\""
                 body = options['mail_intro'] + "<br><br>" +
                        "<a href='#{options['domain']}#{post.url}'>\"#{data['title']}\"</a>" + "<br>" +
@@ -35,7 +40,7 @@ module Jekyll
                        options['mail_closing']
                 Mailer.new(!opts['test']).deliver(recipients, title, body)
 
-                puts "\nPost \"#{title}\" was sent to #{recipients}"
+                puts ("\nPost \"#{data['title']}\" was sent to #{recipients.size} recipients") unless opts['test']
               else
                 puts "\nError! Can't find post with this name.\n"
               end
