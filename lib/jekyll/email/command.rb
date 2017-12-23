@@ -26,6 +26,7 @@ module Jekyll
 
               if post
                 recipients = opts['recipients'] || ENV['RECIPIENTS']
+                recipients_list = recipients.split(',').map(&:strip)
                 data = post.data
 
                 unless opts['test']
@@ -38,9 +39,9 @@ module Jekyll
                        data['excerpt'].to_s.strip +
                        "<a href='#{options['domain']}#{post.url}'>#{options['mail_read_more']}</a>" + "<br><br>" +
                        options['mail_closing']
-                Mailer.new(!opts['test']).deliver(recipients, title, body)
+                Mailer.new(!opts['test']).deliver(recipients_list, title, body)
 
-                puts ("\nPost \"#{data['title']}\" was sent to #{recipients.size} recipients") unless opts['test']
+                puts ("\nPost \"#{data['title']}\" was sent to #{recipients_list.size} recipients") unless opts['test']
               else
                 puts "\nError! Can't find post with this name.\n"
               end

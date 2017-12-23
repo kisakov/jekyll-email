@@ -23,10 +23,9 @@ module Jekyll
       end
 
       def deliver(recipients, subject, body)
-        recipients_list = recipients.split(',').map(&:strip)
-        recipients_list = [recipients_list.first] unless is_smtp
+        recipients = [recipients.first] unless is_smtp
 
-        recipients_list.each do |recipient|
+        recipients.each do |recipient|
           output_message = is_smtp ? "sending to #{recipient}..." : "opening in your browser..."
           puts output_message
 
