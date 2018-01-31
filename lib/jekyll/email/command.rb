@@ -10,7 +10,7 @@ module Jekyll
             c.description 'Send email about post'
             c.option 'post', '-post POST', 'Post name'
             c.option 'test', '-preview', '--test', 'Test mode'
-            c.option 'recipients', '-r RECIPIENTS', '-recipients RECIPIENTS', '--recipients RECIPIENTS', 'Send an email only to specific recipients'
+            c.option 'recipients', '-r RECIPIENTS', '-recipients RECIPIENTS', 'Send an email only to specific recipients'
 
             c.action do |args, opts|
               opts['post'] ||= args.first
