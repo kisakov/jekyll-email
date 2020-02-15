@@ -8,7 +8,7 @@ Add this line to your jekyll application's Gemfile:
 
 ```ruby
 group :jekyll_plugins do
-  gem 'jekyll-email', git: 'git@github.com:kisakov/jekyll-email.git'
+  gem 'jekyll-email', git: 'https://github.com/kisakov/jekyll-email.git'
 end
 ```
 
